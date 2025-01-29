@@ -114,6 +114,11 @@ export default function EditInvoiceForm({
             </div>
           </div>
         </fieldset>
+        <div id="message-error" aria-live="polite" aria-atomic="true">
+          {state?.message && typeof state.message === "string" && (
+            <p className="mt-2 text-sm text-red-500">{state.message}</p>
+          )}
+        </div>
       </div>
       <div className="mt-6 flex justify-end gap-4">
         <Link
@@ -122,7 +127,9 @@ export default function EditInvoiceForm({
         >
           Cancel
         </Link>
-        <Button type="submit">Edit Invoice</Button>
+        <Button type="submit" aria-describedby="message-error">
+          Edit Invoice
+        </Button>
       </div>
     </form>
   );
